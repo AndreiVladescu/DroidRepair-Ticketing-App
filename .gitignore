@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+*.db-wal
+*.db-shm
+.vs/DroidRepair/v17/.suo
+*.db
+*.opendb
+*.ipch
+*.tlog
+*.pdb
+*.recipe
+*.ilk
+*.log
+*.idb
