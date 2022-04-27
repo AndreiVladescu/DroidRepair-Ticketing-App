@@ -28,6 +28,12 @@
     <Filter Include="Source Files\Hashing">
       <UniqueIdentifier>{9f3bd4f6-d787-45ed-94d1-33dfb76e64b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Users">
+      <UniqueIdentifier>{afdc1119-8d5b-451a-922e-cd5ffa9cb80e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\User">
+      <UniqueIdentifier>{9e40be4d-1caa-4515-b41b-de73c0af556b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum_Packets.h">
@@ -48,6 +54,12 @@
     <ClInclude Include="openbsd.h">
       <Filter>Header Files\Hashing</Filter>
     </ClInclude>
+    <ClInclude Include="IUser.h">
+      <Filter>Header Files\Users</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files\Users</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ticket.cpp">
@@ -61,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files\User</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

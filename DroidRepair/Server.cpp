@@ -125,18 +125,18 @@ bool Server::GetBool(int id, bool& value)
 	return true;
 }
 
-bool Server::SendPacketType(int id, const PACKET& packetType)
+bool Server::SendPacketType(int id, const PACKET_HEADER& packetType)
 {
-	int returnCheck = send(Connections[id], (char*)&packetType, sizeof(PACKET), NULL);
+	int returnCheck = send(Connections[id], (char*)&packetType, sizeof(PACKET_HEADER), NULL);
 	if (returnCheck == SOCKET_ERROR)
 		return false;
 
 	return true;
 }
 
-bool Server::GetPacketType(int id, PACKET& packetType)
+bool Server::GetPacketType(int id, PACKET_HEADER& packetType)
 {
-	int returnCheck = recv(Connections[id], (char*)&packetType, sizeof(PACKET), NULL);
+	int returnCheck = recv(Connections[id], (char*)&packetType, sizeof(PACKET_HEADER), NULL);
 	if (returnCheck == SOCKET_ERROR)
 		return false;
 
@@ -145,8 +145,8 @@ bool Server::GetPacketType(int id, PACKET& packetType)
 
 bool Server::SendString(int id, const std::string& value)
 {
-	if (!SendPacketType(id, P_ChatMessage))
-		return false;
+	/*if (!SendPacketType(id, P_ChatMessage))
+		return false;*/
 
 	int bufferLength = value.size();
 	if (!SendInt(id, bufferLength))
@@ -165,7 +165,7 @@ bool Server::GetString(int id, std::string& value)
 	if (!GetInt(id, bufferLength))
 		return false;
 
-	char* buffer = new char[bufferLength + 1]; // +1 tro allow for terminating '/0'
+	char* buffer = new char[bufferLength + 1]; // +1 to allow for terminating '/0'
 
 	int returnCheck = recv(Connections[id], buffer, bufferLength, NULL);
 	buffer[bufferLength] = '\0';
@@ -178,82 +178,29 @@ bool Server::GetString(int id, std::string& value)
 	return true;
 }
 
-bool Server::ProcessPacket(int index, PACKET packetType)
+bool Server::ProcessPacket(int index, PACKET_HEADER packetType)
 {
 	switch (packetType)
 	{
-	case P_ChatMessage:
+	case Login_Client_Request:
 	{
-		std::string message;
-		if (!GetString(index, message))
-			return false;
-		for (int i = 0; i < ConnectionCounter; i++)
-		{
-			if (i == index)
-				continue;
-			//Add user to start of message
-			std::string newMessage = /*usernames[index]*/"Placeholder: " + message;
-			if (!SendString(i, newMessage))
-				std::cout << "Failed to send message from " << index << " to " << i << std::endl;
+		if (!LoginClient(index)) {
+			cout << "Failed login from " << index << endl;
 		}
-
-		std::cout << "Processed messages for user. ID = " << index << std::endl;
-		break;
-	}
-
-	case P_DirectMessage:
-	{
-		//std::cout << "DM Message" << std::endl;
-		//std::string user;
-		//std::string message;
-
-		//std::string value;
-
-		//int usernameIndex = -1;
-		//bool userExists = false;
-
-		////get user
-		//if (!GetString(index, value))
+		//string message;
+		//if (!GetString(index, message))
 		//	return false;
-
-		//int val = 0;
-		////get desired user
-		//while (value[val] != ' ')
-		//{
-		//	user += value[val];
-		//	val++;
-		//}
-
-		////Check if user Exists
 		//for (int i = 0; i < ConnectionCounter; i++)
 		//{
-		//	if (usernames[i] == user)
-		//	{
-		//		userExists = true;
-		//		usernameIndex = i;
-		//		break;
-		//	}
+		//	if (i == index)
+		//		continue;
+		//	//Add user to start of message
+		//	string newMessage = /*usernames[index]*/"Placeholder: " + message;
+		//	if (!SendString(i, newMessage))
+		//		cout << "Failed to send message from " << index << " to " << i << std::endl;
 		//}
 
-		//if (userExists)
-		//{
-		//	//get message
-		//	for (int i = val; i < value.size(); i++)
-		//	{
-		//		message += value[i];
-		//	}
-		//}
-
-		//SendPacketType(index, P_DirectMessage);
-		//SendBool(index, userExists);
-
-		//if (userExists)
-		//{
-		//	std::string fullMessage = "PM from " + usernames[index] + ": " + message;
-
-		//	SendString(usernameIndex, fullMessage);
-		//}
-
+		//std::cout << "Processed messages for user. ID = " << index << std::endl;
 		break;
 	}
 
@@ -261,6 +208,17 @@ bool Server::ProcessPacket(int index, PACKET packetType)
 		std::cout << "Unrecognized packet: " << packetType << std::endl;
 		break;
 	}
+	return true;
+}
+
+bool Server::LoginClient(int index)
+{
+	string email, passwd;
+	if (!GetString(index, email))
+		return false;
+	if (!GetString(index, passwd))
+		return false;
+
 	return true;
 }
 
@@ -278,7 +236,7 @@ bool Server::CloseConnection(int index)
 void Server::Getusername(int index)
 {
 	serverPtr->usernames.push_back("");
-	PACKET packetType;
+	PACKET_HEADER packetType;
 
 	//Get Username
 	bool usernameSaved = true;
@@ -291,11 +249,11 @@ void Server::Getusername(int index)
 			break;
 		}
 
-		if (!packetType == P_ChatMessage)
+		/*if (!packetType == P_ChatMessage)
 		{
 			std::cout << "Getting username is not a message Package" << std::endl;
 			break;
-		}
+		}*/
 
 		std::string userName;
 		serverPtr->GetString(index, userName);
@@ -322,7 +280,7 @@ void Server::Getusername(int index)
 //Bulk of work
 void Server::ClientHandler(int index)
 {
-	PACKET packetType;
+	PACKET_HEADER packetType;
 	while (true)
 	{
 		//Receive Messages

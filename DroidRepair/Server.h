@@ -14,6 +14,8 @@
 
 #include "../SharedLibs/Enum_Packets.h"
 
+using namespace std;
+
 class Server
 {
 public:
@@ -35,17 +37,22 @@ private:
 	int ConnectionCounter = 0;
 #pragma endregion
 
+	// Don't use
 	void Getusername(int id);
 
 	bool GetInt(int id, int& value);
 	bool SendInt(int id, int value);
 	bool SendBool(int id, bool value);
 	bool GetBool(int id, bool& value);
-	bool SendPacketType(int id, const PACKET& packetType);
-	bool GetPacketType(int id, PACKET& packetType);
+	bool SendPacketType(int id, const PACKET_HEADER& packetType);
+	bool GetPacketType(int id, PACKET_HEADER& packetType);
 	bool SendString(int id, const std::string& value);
 	bool GetString(int id, std::string& value);
-	bool ProcessPacket(int index, PACKET packetType);
+
+	bool ProcessPacket(int index, PACKET_HEADER packetType);
+
+	bool LoginClient(int index);
+
 	bool CloseConnection(int index);
 
 	static void ClientHandler(int index);

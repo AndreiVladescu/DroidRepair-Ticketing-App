@@ -63,7 +63,7 @@ bool Client::Connect()
 	return connected;
 }
 
-bool Client::ProcessPacket(PACKET packetType)
+bool Client::ProcessPacket(PACKET_HEADER packetType)
 {
 	switch (packetType)
 	{
@@ -91,7 +91,7 @@ bool Client::ProcessPacket(PACKET packetType)
 
 void Client::ClientHandler()
 {
-	PACKET packetType;
+	PACKET_HEADER packetType;
 	while (true)
 	{
 		//get type
@@ -160,17 +160,17 @@ bool Client::GetInt(int& value)
 
 	return true;
 }
-bool Client::SendPacketType(const PACKET& packetType)
+bool Client::SendPacketType(const PACKET_HEADER& packetType)
 {
-	int returnCheck = send(ServerConnection, (char*)&packetType, sizeof(PACKET), NULL);
+	int returnCheck = send(ServerConnection, (char*)&packetType, sizeof(PACKET_HEADER), NULL);
 	if (returnCheck == SOCKET_ERROR)
 		return false;
 
 	return true;
 }
-bool Client::GetPacketType(PACKET& packetType)
+bool Client::GetPacketType(PACKET_HEADER& packetType)
 {
-	int returnCheck = recv(ServerConnection, (char*)&packetType, sizeof(PACKET), NULL);
+	int returnCheck = recv(ServerConnection, (char*)&packetType, sizeof(PACKET_HEADER), NULL);
 	if (returnCheck == SOCKET_ERROR)
 		return false;
 

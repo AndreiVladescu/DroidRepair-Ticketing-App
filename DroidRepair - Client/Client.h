@@ -27,14 +27,14 @@ public:
 	bool DM_Failed;
 
 private:
-	bool ProcessPacket(PACKET packetType);
+	bool ProcessPacket(PACKET_HEADER packetType);
 	static void ClientHandler();
 
 	bool SendInt(const int& value) const;
 	bool GetInt(int& value);
 	bool SendBool(bool value);
-	bool SendPacketType(const PACKET& packetType);
-	bool GetPacketType(PACKET& packetType);
+	bool SendPacketType(const PACKET_HEADER& packetType);
+	bool GetPacketType(PACKET_HEADER& packetType);
 	bool GetString(std::string& value);
 	bool CloseConnection();
 

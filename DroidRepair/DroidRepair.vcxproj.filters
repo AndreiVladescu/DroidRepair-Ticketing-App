@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Server">
       <UniqueIdentifier>{65df873f-46d5-4e2a-85e6-5905a0844931}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\SQL">
+      <UniqueIdentifier>{de6ce338-aa64-483d-82e7-1b2f1186d805}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SQL">
+      <UniqueIdentifier>{ad377d8e-477f-4e87-b5da-ee02bfb5d132}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="server-main.cpp">
@@ -27,10 +33,16 @@
     <ClCompile Include="Server.cpp">
       <Filter>Source Files\Server</Filter>
     </ClCompile>
+    <ClCompile Include="SQLServer.cpp">
+      <Filter>Source Files\SQL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Server.h">
       <Filter>Header Files\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLServer.h">
+      <Filter>Header Files\SQL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
