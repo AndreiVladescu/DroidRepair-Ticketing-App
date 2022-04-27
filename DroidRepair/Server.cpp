@@ -81,7 +81,7 @@ bool Server::ListenForNewConnection()
 	{
 		std::cout << "Client connected" << std::endl;
 		Connections[ConnectionCounter] = ClientSocket;
-		Getusername(ConnectionCounter);
+		//Getusername(ConnectionCounter);
 
 		connectionThreads[ConnectionCounter] = std::thread(ClientHandler, ConnectionCounter);
 		ConnectionCounter++;
@@ -192,7 +192,7 @@ bool Server::ProcessPacket(int index, PACKET packetType)
 			if (i == index)
 				continue;
 			//Add user to start of message
-			std::string newMessage = usernames[index] + ": " + message;
+			std::string newMessage = /*usernames[index]*/"Placeholder: " + message;
 			if (!SendString(i, newMessage))
 				std::cout << "Failed to send message from " << index << " to " << i << std::endl;
 		}
@@ -203,56 +203,56 @@ bool Server::ProcessPacket(int index, PACKET packetType)
 
 	case P_DirectMessage:
 	{
-		std::cout << "DM Message" << std::endl;
-		std::string user;
-		std::string message;
+		//std::cout << "DM Message" << std::endl;
+		//std::string user;
+		//std::string message;
 
-		std::string value;
+		//std::string value;
 
-		int usernameIndex = -1;
-		bool userExists = false;
+		//int usernameIndex = -1;
+		//bool userExists = false;
 
-		//get user
-		if (!GetString(index, value))
-			return false;
+		////get user
+		//if (!GetString(index, value))
+		//	return false;
 
-		int val = 0;
-		//get desired user
-		while (value[val] != ' ')
-		{
-			user += value[val];
-			val++;
-		}
+		//int val = 0;
+		////get desired user
+		//while (value[val] != ' ')
+		//{
+		//	user += value[val];
+		//	val++;
+		//}
 
-		//Check if user Exists
-		for (int i = 0; i < ConnectionCounter; i++)
-		{
-			if (usernames[i] == user)
-			{
-				userExists = true;
-				usernameIndex = i;
-				break;
-			}
-		}
+		////Check if user Exists
+		//for (int i = 0; i < ConnectionCounter; i++)
+		//{
+		//	if (usernames[i] == user)
+		//	{
+		//		userExists = true;
+		//		usernameIndex = i;
+		//		break;
+		//	}
+		//}
 
-		if (userExists)
-		{
-			//get message
-			for (int i = val; i < value.size(); i++)
-			{
-				message += value[i];
-			}
-		}
+		//if (userExists)
+		//{
+		//	//get message
+		//	for (int i = val; i < value.size(); i++)
+		//	{
+		//		message += value[i];
+		//	}
+		//}
 
-		SendPacketType(index, P_DirectMessage);
-		SendBool(index, userExists);
+		//SendPacketType(index, P_DirectMessage);
+		//SendBool(index, userExists);
 
-		if (userExists)
-		{
-			std::string fullMessage = "PM from " + usernames[index] + ": " + message;
+		//if (userExists)
+		//{
+		//	std::string fullMessage = "PM from " + usernames[index] + ": " + message;
 
-			SendString(usernameIndex, fullMessage);
-		}
+		//	SendString(usernameIndex, fullMessage);
+		//}
 
 		break;
 	}
@@ -299,8 +299,10 @@ void Server::Getusername(int index)
 
 		std::string userName;
 		serverPtr->GetString(index, userName);
-		for each (std::string var in serverPtr->usernames)
+		//for each (std::string var in serverPtr->usernames)
+		for (int i = 0; i < serverPtr->usernames.size(); i++)
 		{
+			std::string var = serverPtr->usernames[i];
 			if (var == userName)
 			{
 				usernameSaved = false;

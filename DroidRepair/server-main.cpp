@@ -21,15 +21,12 @@
 
 int main(void)
 {
-
 	Server server(DEFAULT_PORT);
 
 	for (int i = 0; i < 100; i++)
 	{
 		server.ListenForNewConnection();
 	}
-
-	system("pause");
 
 	return 0;
 }

@@ -8,6 +8,7 @@
 Client* myClient;
 
 #define DEFAULT_PORT 27015
+#define LOCALHOST "127.0.0.1"
 
 void SecureUsername()
 {
@@ -30,7 +31,7 @@ void SecureUsername()
 
 int main(int argc, char** argv)
 {
-	myClient = new Client(argc, argv, DEFAULT_PORT);
+	myClient = new Client(LOCALHOST, DEFAULT_PORT);
 
 	if (!myClient->Connect())
 	{
@@ -38,35 +39,34 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-	SecureUsername();
+	//SecureUsername();
 
 	myClient->StartSubRoutine();
 
 	//Receive and create messages
-	std::string buffer;
-	while (true)
-	{
-		std::getline(std::cin, buffer); // get line from cmd console
+	//std::string buffer;
+	//while (true)
+	//{
+	//	std::getline(std::cin, buffer); // get line from cmd console
 
-		if (buffer[0] == '@')
-		{
-			buffer.erase(0, 1);
-			if (!myClient->SendDirectMessage(buffer))
-				break;
-		}
-		else
-		{
-			if (!myClient->SendString(buffer))
-				break; // leave as server conn lost
-		}
-	}
+	//	/*if (buffer[0] == '@')
+	//	{
+	//		buffer.erase(0, 1);
+	//		if (!myClient->SendDirectMessage(buffer))
+	//			break;
+	//	}
+	//	else
+	//	{*/
+	//	if (!myClient->SendString(buffer))
+	//		break; // leave as server conn lost
+	////}
+	//}
+
+
+
 
 	// cleanup
-	system("pause");
-
 	WSACleanup();
-
-	system("pause");
 
 	return 0;
 }

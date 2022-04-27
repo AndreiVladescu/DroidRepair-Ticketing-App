@@ -1,13 +1,8 @@
 #include "Client.h"
 
-Client::Client(int argc, char** argv, int PORT)
+Client::Client(const char* serverAddress, int PORT)
 {
 	WSADATA wsaData;
-
-	// Validate the parameters
-	if (argc != 2) {
-		printf("usage: %s server-name\n", argv[0]);
-	}
 
 	// Initialize Winsock
 	iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -22,7 +17,7 @@ Client::Client(int argc, char** argv, int PORT)
 	hints.ai_protocol = IPPROTO_TCP;
 
 	// Resolve the server address and port
-	iResult = getaddrinfo(argv[1], std::to_string(PORT).c_str(), &hints, &result);
+	iResult = getaddrinfo(serverAddress, std::to_string(PORT).c_str(), &hints, &result);
 	if (iResult != 0) {
 		printf("getaddrinfo failed with error: %d\n", iResult);
 		WSACleanup();
@@ -70,8 +65,6 @@ bool Client::Connect()
 
 bool Client::ProcessPacket(PACKET packetType)
 {
-
-
 	switch (packetType)
 	{
 	case P_ChatMessage:

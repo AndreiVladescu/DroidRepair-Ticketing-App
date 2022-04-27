@@ -16,10 +16,51 @@
     <Filter Include="Header Files\Enums">
       <UniqueIdentifier>{33e4a0b2-5702-4f63-92ed-83e3fa25ab40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Tickets">
+      <UniqueIdentifier>{4539fd6c-acdd-4827-97dd-f0bdd336d887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tickets">
+      <UniqueIdentifier>{c16e0876-8d2a-4abf-b17c-dbd4a9731960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hashing">
+      <UniqueIdentifier>{0f165161-5ac5-4c02-a9a8-1297829f780c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hashing">
+      <UniqueIdentifier>{9f3bd4f6-d787-45ed-94d1-33dfb76e64b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PACKETENUM.h">
+    <ClInclude Include="Enum_Packets.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="ITicket.h">
+      <Filter>Header Files\Tickets</Filter>
+    </ClInclude>
+    <ClInclude Include="Ticket.h">
+      <Filter>Header Files\Tickets</Filter>
+    </ClInclude>
+    <ClInclude Include="bcrypt.h">
+      <Filter>Header Files\Hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="node_blf.h">
+      <Filter>Header Files\Hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="openbsd.h">
+      <Filter>Header Files\Hashing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Ticket.cpp">
+      <Filter>Source Files\Tickets</Filter>
+    </ClCompile>
+    <ClCompile Include="bcrypt.cpp">
+      <Filter>Source Files\Hashing</Filter>
+    </ClCompile>
+    <ClCompile Include="blowfish.cpp">
+      <Filter>Source Files\Hashing</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

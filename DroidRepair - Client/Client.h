@@ -11,13 +11,13 @@
 #include <string>
 #include <thread>
 
-#include "../SharedLibs/PACKETENUM.h"
+#include "../SharedLibs/Enum_Packets.h"
 
 
 class Client
 {
 public:
-	Client(int argc, char** argv, int PORT);
+	Client(const char* serverAddress, int PORT);
 	bool Connect();
 	inline void StartSubRoutine() { clientThread = std::thread(ClientHandler); }
 

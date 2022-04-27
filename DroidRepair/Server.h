@@ -12,7 +12,7 @@
 #include <thread>
 #include <stdio.h>
 
-#include "../SharedLibs/PACKETENUM.h"
+#include "../SharedLibs/Enum_Packets.h"
 
 class Server
 {
@@ -23,6 +23,7 @@ public:
 	std::vector<std::string> usernames = {};
 
 private:
+#pragma region Winsock
 	SOCKET Connections[100];
 	std::thread connectionThreads[100];
 
@@ -32,6 +33,7 @@ private:
 	int iResult;
 
 	int ConnectionCounter = 0;
+#pragma endregion
 
 	void Getusername(int id);
 
