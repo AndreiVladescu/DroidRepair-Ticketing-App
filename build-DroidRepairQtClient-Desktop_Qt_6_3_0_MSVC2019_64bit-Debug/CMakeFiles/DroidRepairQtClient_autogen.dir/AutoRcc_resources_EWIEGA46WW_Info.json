@@ -1,0 +1,27 @@
+{
+	"BUILD_DIR" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/DroidRepairQtClient_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient",
+	"CMAKE_SOURCE_DIR" : "C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient",
+	"INCLUDE_DIR" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/DroidRepairQtClient_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Resources/droid_repair_reduced.png",
+		"C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Resources/green_led.jpg",
+		"C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Resources/red_led.jpg",
+		"C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Resources/droid_repair.png",
+		"C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Resources/cog_icon.ico",
+		"C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Resources/droid_repair.ico"
+	],
+	"LOCK_FILE" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/CMakeFiles/DroidRepairQtClient_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "D:/Documents/Qt/6.3.0/msvc2019_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/CMakeFiles/DroidRepairQtClient_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/resources.qrc",
+	"VERBOSITY" : 0
+}

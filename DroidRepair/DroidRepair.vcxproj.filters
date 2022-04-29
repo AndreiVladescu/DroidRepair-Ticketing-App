@@ -25,6 +25,12 @@
     <Filter Include="Source Files\SQL">
       <UniqueIdentifier>{ad377d8e-477f-4e87-b5da-ee02bfb5d132}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Hashing">
+      <UniqueIdentifier>{b8311c54-e369-441a-839b-b659e2c1f6ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hashing">
+      <UniqueIdentifier>{78a64c80-0ca1-416f-a883-09787718f5df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="server-main.cpp">
@@ -36,6 +42,12 @@
     <ClCompile Include="SQLServer.cpp">
       <Filter>Source Files\SQL</Filter>
     </ClCompile>
+    <ClCompile Include="..\SharedLibs\bcrypt.cpp">
+      <Filter>Source Files\Hashing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SharedLibs\blowfish.cpp">
+      <Filter>Source Files\Hashing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Server.h">
@@ -43,6 +55,15 @@
     </ClInclude>
     <ClInclude Include="SQLServer.h">
       <Filter>Header Files\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharedLibs\bcrypt.h">
+      <Filter>Header Files\Hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharedLibs\node_blf.h">
+      <Filter>Header Files\Hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharedLibs\openbsd.h">
+      <Filter>Header Files\Hashing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

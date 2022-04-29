@@ -52,11 +52,13 @@ bool SQLServer::AuthenticateUser(string email, string provided_password)
 
 	rc = sqlite3_step(stmt);
 	char* passwd_primitive = (char*)sqlite3_column_text(stmt, 0);
+	if (passwd_primitive == NULL)
+		return false;
 	passwd = passwd_primitive;
 
 	sqlite3_finalize(stmt);
 
-	if (passwd == provided_password)
+	if (bcrypt::validatePassword(provided_password, passwd))
 		return true;
 	return false;
 }

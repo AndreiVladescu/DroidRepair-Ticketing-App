@@ -13,6 +13,10 @@
 
 #include "../SharedLibs/Enum_Packets.h"
 
+using namespace std;
+
+#define DEFAULT_PORT 27015
+#define LOCALHOST "127.0.0.1"
 
 class Client
 {
@@ -22,10 +26,10 @@ public:
 	inline void StartSubRoutine() { clientThread = std::thread(ClientHandler); }
 
 	bool SendString(const std::string& value);
-	bool SendDirectMessage(const std::string& value);
 	bool GetBool(bool& value);
-	bool DM_Failed;
 
+	bool LoginResponse();
+	friend void Login();
 private:
 	bool ProcessPacket(PACKET_HEADER packetType);
 	static void ClientHandler();

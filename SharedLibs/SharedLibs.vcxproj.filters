@@ -22,12 +22,6 @@
     <Filter Include="Source Files\Tickets">
       <UniqueIdentifier>{c16e0876-8d2a-4abf-b17c-dbd4a9731960}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Hashing">
-      <UniqueIdentifier>{0f165161-5ac5-4c02-a9a8-1297829f780c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Hashing">
-      <UniqueIdentifier>{9f3bd4f6-d787-45ed-94d1-33dfb76e64b4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Users">
       <UniqueIdentifier>{afdc1119-8d5b-451a-922e-cd5ffa9cb80e}</UniqueIdentifier>
     </Filter>
@@ -45,15 +39,6 @@
     <ClInclude Include="Ticket.h">
       <Filter>Header Files\Tickets</Filter>
     </ClInclude>
-    <ClInclude Include="bcrypt.h">
-      <Filter>Header Files\Hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="node_blf.h">
-      <Filter>Header Files\Hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="openbsd.h">
-      <Filter>Header Files\Hashing</Filter>
-    </ClInclude>
     <ClInclude Include="IUser.h">
       <Filter>Header Files\Users</Filter>
     </ClInclude>
@@ -64,12 +49,6 @@
   <ItemGroup>
     <ClCompile Include="Ticket.cpp">
       <Filter>Source Files\Tickets</Filter>
-    </ClCompile>
-    <ClCompile Include="bcrypt.cpp">
-      <Filter>Source Files\Hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="blowfish.cpp">
-      <Filter>Source Files\Hashing</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>

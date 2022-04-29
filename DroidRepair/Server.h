@@ -13,6 +13,7 @@
 #include <stdio.h>
 
 #include "../SharedLibs/Enum_Packets.h"
+#include "SQLServer.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
 	bool ListenForNewConnection();
 
 	std::vector<std::string> usernames = {};
-
+	SQLServer* sqlServer = SQLServer::getInstance();
 private:
 #pragma region Winsock
 	SOCKET Connections[100];
@@ -36,9 +37,6 @@ private:
 
 	int ConnectionCounter = 0;
 #pragma endregion
-
-	// Don't use
-	void Getusername(int id);
 
 	bool GetInt(int id, int& value);
 	bool SendInt(int id, int value);

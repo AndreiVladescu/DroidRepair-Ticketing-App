@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>Resources/droid_repair.png</file>
+        <file>Resources/droid_repair_reduced.png</file>
+        <file>Resources/green_led.jpg</file>
+        <file>Resources/red_led.jpg</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>Resources/droid_repair.ico</file>
+        <file>Resources/cog_icon.ico</file>
+    </qresource>
+</RCC>

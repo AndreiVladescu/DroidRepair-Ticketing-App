@@ -19,18 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bcrypt.h" />
     <ClInclude Include="Enum_Packets.h" />
     <ClInclude Include="ITicket.h" />
     <ClInclude Include="IUser.h" />
-    <ClInclude Include="node_blf.h" />
-    <ClInclude Include="openbsd.h" />
     <ClInclude Include="Ticket.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bcrypt.cpp" />
-    <ClCompile Include="blowfish.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="User.cpp" />

@@ -22,11 +22,12 @@
 
 int main(void)
 {
-	auto sqlServer = SQLServer::getInstance();
-	string email = "technician3@mail.com";
-	string passwd = "$2b$10$IQM8fMDqzo3QiClv6Ztn4uzSPIFXXhpyNyCg49Mi8CkVOsRLSnp6C";
-	sqlServer->AuthenticateUser(email, passwd);
-	return 0;
+	//auto sqlServer = SQLServer::getInstance();
+	//string email = "technician3@mail.com";
+	//string passwd = "abcde";
+
+	//sqlServer->AuthenticateUser(email, passwd);
+	//return 0;
 	//
 	Server server(DEFAULT_PORT);
 

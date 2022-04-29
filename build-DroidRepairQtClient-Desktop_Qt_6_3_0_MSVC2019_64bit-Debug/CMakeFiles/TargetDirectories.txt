@@ -1,0 +1,5 @@
+C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/CMakeFiles/DroidRepairQtClient.dir
+C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/CMakeFiles/DroidRepairQtClient_autogen_timestamp_deps.dir
+C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/CMakeFiles/DroidRepairQtClient_autogen.dir

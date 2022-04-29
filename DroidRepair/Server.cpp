@@ -219,6 +219,18 @@ bool Server::LoginClient(int index)
 	if (!GetString(index, passwd))
 		return false;
 
+	bool rb;
+	rb = sqlServer->AuthenticateUser(email, passwd);
+
+
+	SendBool(index, rb);
+	if (rb) {
+		cout << "Client " << index << " connected" << endl;
+	}
+
+	SendPacketType(index, Login_Server_Response);
+	SendBool(index, true);
+
 	return true;
 }
 
@@ -231,50 +243,6 @@ bool Server::CloseConnection(int index)
 	}
 
 	return true;
-}
-
-void Server::Getusername(int index)
-{
-	serverPtr->usernames.push_back("");
-	PACKET_HEADER packetType;
-
-	//Get Username
-	bool usernameSaved = true;
-	do
-	{
-		usernameSaved = true;
-		if (!serverPtr->GetPacketType(index, packetType))
-		{
-			std::cout << "Could not get username" << std::endl;
-			break;
-		}
-
-		/*if (!packetType == P_ChatMessage)
-		{
-			std::cout << "Getting username is not a message Package" << std::endl;
-			break;
-		}*/
-
-		std::string userName;
-		serverPtr->GetString(index, userName);
-		//for each (std::string var in serverPtr->usernames)
-		for (int i = 0; i < serverPtr->usernames.size(); i++)
-		{
-			std::string var = serverPtr->usernames[i];
-			if (var == userName)
-			{
-				usernameSaved = false;
-				break;
-			}
-		}
-		if (usernameSaved)
-		{
-			serverPtr->usernames[index] = userName;
-			std::cout << "Username " << userName << " stored at " << index << std::endl;
-		}
-		serverPtr->SendBool(index, usernameSaved);
-
-	} while (!usernameSaved);
 }
 
 //Bulk of work

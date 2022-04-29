@@ -3,6 +3,9 @@
 #include <iostream>
 #include <sqlite3.h>
 
+#include "../SharedLibs/bcrypt.h"
+#include "../SharedLibs/node_blf.h"
+
 using namespace std;
 
 constexpr auto DATABASE_NAME = "droid.db";

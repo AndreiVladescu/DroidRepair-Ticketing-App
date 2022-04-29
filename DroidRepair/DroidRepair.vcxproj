@@ -73,6 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Admin\source\repos\DroidRepair\SharedLibs;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,11 +142,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\SharedLibs\bcrypt.cpp" />
+    <ClCompile Include="..\SharedLibs\blowfish.cpp" />
     <ClCompile Include="server-main.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="SQLServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\SharedLibs\bcrypt.h" />
+    <ClInclude Include="..\SharedLibs\node_blf.h" />
+    <ClInclude Include="..\SharedLibs\openbsd.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="SQLServer.h" />
   </ItemGroup>

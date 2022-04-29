@@ -1,4 +1,5 @@
 #include "Client.h"
+#include <conio.h>
 
 // Need to link with Ws2_32.lib, Mswsock.lib, and Advapi32.lib
 #pragma comment (lib, "Ws2_32.lib")
@@ -10,23 +11,26 @@ Client* myClient;
 #define DEFAULT_PORT 27015
 #define LOCALHOST "127.0.0.1"
 
-void SecureUsername()
+void Login()
 {
-	// Make client have a username
-	bool usernameAccepted = false;
-	do
-	{
-		std::cout << "Please provide a username" << std::endl;
-		std::string username;
-		std::getline(std::cin, username);
-		myClient->SendString(username);
+	string email, password;
+	bool userLogged = false;
+	bool passAccepted = false;
+	while (userLogged == false) {
+		myClient->SendPacketType(Login_Client_Request);
+		cout << "Provide email:" << endl;
+		getline(cin, email);
+		myClient->SendString(email);
+		cout << "Provide password:" << endl;
+		getline(cin, password);
+		myClient->SendString(password);
 
-		myClient->GetBool(usernameAccepted);
+		//PACKET_HEADER packetType;
+		//myClient->GetPacketType(packetType);
+		myClient->GetBool(userLogged);
+	}
 
-		if (!usernameAccepted)
-			std::cout << "Username Taken, Try again" << std::endl;
-
-	} while (!usernameAccepted);
+	//cout << "Connection established between server and client" << endl;
 }
 
 int main(int argc, char** argv)
@@ -40,7 +44,7 @@ int main(int argc, char** argv)
 	}
 
 	//SecureUsername();
-
+	Login();
 	myClient->StartSubRoutine();
 
 	//Receive and create messages
@@ -62,7 +66,7 @@ int main(int argc, char** argv)
 	////}
 	//}
 
-
+	_getch();
 
 
 	// cleanup
