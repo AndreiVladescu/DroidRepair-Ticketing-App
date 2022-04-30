@@ -23,12 +23,12 @@
 int main(void)
 {
 	//auto sqlServer = SQLServer::getInstance();
-	//string email = "technician3@mail.com";
+	//string email = "technician1@mail.com";
 	//string passwd = "abcde";
 
-	//sqlServer->AuthenticateUser(email, passwd);
+	//cout << sqlServer->GetUserRole(email);
 	//return 0;
-	//
+
 	Server server(DEFAULT_PORT);
 
 	for (int i = 0; i < 100; i++)

@@ -187,20 +187,6 @@ bool Server::ProcessPacket(int index, PACKET_HEADER packetType)
 		if (!LoginClient(index)) {
 			cout << "Failed login from " << index << endl;
 		}
-		//string message;
-		//if (!GetString(index, message))
-		//	return false;
-		//for (int i = 0; i < ConnectionCounter; i++)
-		//{
-		//	if (i == index)
-		//		continue;
-		//	//Add user to start of message
-		//	string newMessage = /*usernames[index]*/"Placeholder: " + message;
-		//	if (!SendString(i, newMessage))
-		//		cout << "Failed to send message from " << index << " to " << i << std::endl;
-		//}
-
-		//std::cout << "Processed messages for user. ID = " << index << std::endl;
 		break;
 	}
 
@@ -231,11 +217,35 @@ bool Server::LoginClient(int index)
 	SendPacketType(index, Login_Server_Response);
 	SendBool(index, true);
 
+
+	//userIDs[index];
+	return true;
+}
+
+bool Server::SendClientTickets(int index)
+{
+
+
+	return true;
+}
+
+bool Server::LinkClientToConnection(int index, string email)
+{
+	// Link user socket index to database id
+	// = dynamic_cast<IUser*> (
+	users[index] = new User;
+	users[index]->setID(this->sqlServer->GetUserID(email));
+	users[index]->setEmail(email);
+	users[index]->setRole(this->sqlServer->GetUserRole(email));
 	return true;
 }
 
 bool Server::CloseConnection(int index)
 {
+	if (users[index] != nullptr) {
+		delete users[index];
+		users[index] = nullptr;
+	}
 	if (closesocket(Connections[index]) == SOCKET_ERROR)
 	{
 		std::cout << "Failed closing Error: " << WSAGetLastError() << std::endl;
@@ -244,6 +254,7 @@ bool Server::CloseConnection(int index)
 
 	return true;
 }
+
 
 //Bulk of work
 void Server::ClientHandler(int index)

@@ -25,11 +25,14 @@
     <Filter Include="Source Files\SQL">
       <UniqueIdentifier>{ad377d8e-477f-4e87-b5da-ee02bfb5d132}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Hashing">
-      <UniqueIdentifier>{b8311c54-e369-441a-839b-b659e2c1f6ba}</UniqueIdentifier>
+    <Filter Include="Source Files\Tickets">
+      <UniqueIdentifier>{8e5df1ab-9743-4326-8416-584f942f825e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Hashing">
-      <UniqueIdentifier>{78a64c80-0ca1-416f-a883-09787718f5df}</UniqueIdentifier>
+    <Filter Include="Source Files\Users">
+      <UniqueIdentifier>{c5d2bdac-bf06-466a-be3a-43aab6b36920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hashing">
+      <UniqueIdentifier>{af7271c0-5101-4d24-a260-0850cefb3eb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +51,12 @@
     <ClCompile Include="..\SharedLibs\blowfish.cpp">
       <Filter>Source Files\Hashing</Filter>
     </ClCompile>
+    <ClCompile Include="..\SharedLibs\Ticket.cpp">
+      <Filter>Source Files\Tickets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SharedLibs\User.cpp">
+      <Filter>Source Files\Users</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Server.h">
@@ -55,15 +64,6 @@
     </ClInclude>
     <ClInclude Include="SQLServer.h">
       <Filter>Header Files\SQL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SharedLibs\bcrypt.h">
-      <Filter>Header Files\Hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SharedLibs\node_blf.h">
-      <Filter>Header Files\Hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SharedLibs\openbsd.h">
-      <Filter>Header Files\Hashing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

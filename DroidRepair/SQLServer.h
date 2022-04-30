@@ -30,5 +30,7 @@ private:
 public:
 	static SQLServer* getInstance();
 	static bool AuthenticateUser(string email, string password);
+	static int GetUserID(string email);
+	static int GetUserRole(string email);
 };
 

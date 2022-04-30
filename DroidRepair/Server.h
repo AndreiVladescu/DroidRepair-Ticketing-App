@@ -2,6 +2,9 @@
 #undef UNICODE
 #define WIN32_LEAN_AND_MEAN
 
+#include "IUser.h"
+#include "User.h"
+
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -23,12 +26,12 @@ public:
 	Server(int PORT);
 	bool ListenForNewConnection();
 
-	std::vector<std::string> usernames = {};
+	IUser* users[100];
 	SQLServer* sqlServer = SQLServer::getInstance();
 private:
 #pragma region Winsock
 	SOCKET Connections[100];
-	std::thread connectionThreads[100];
+	thread connectionThreads[100];
 
 	addrinfo* result;
 	addrinfo hints;
@@ -50,6 +53,8 @@ private:
 	bool ProcessPacket(int index, PACKET_HEADER packetType);
 
 	bool LoginClient(int index);
+	bool SendClientTickets(int index);
+	bool LinkClientToConnection(int index, string email);
 
 	bool CloseConnection(int index);
 

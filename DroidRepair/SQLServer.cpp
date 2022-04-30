@@ -62,3 +62,55 @@ bool SQLServer::AuthenticateUser(string email, string provided_password)
 		return true;
 	return false;
 }
+
+int SQLServer::GetUserID(string email)
+{
+	sqlite3_stmt* stmt;
+	int userId;
+
+	auto sql = "select ID from Users where Email = '" + email + "'";
+
+	int rc = sqlite3_prepare_v2(instance->db, sql.c_str(), -1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		printf("error: %s", sqlite3_errmsg(instance->db));
+		exit(-1);
+	}
+
+	rc = sqlite3_step(stmt);
+	char* userIdString = (char*)sqlite3_column_text(stmt, 0);
+	if (userIdString == NULL)
+		return -1;
+	userId = atoi(userIdString);
+
+	sqlite3_finalize(stmt);
+
+	return userId;
+}
+
+int SQLServer::GetUserRole(string email)
+{
+
+	sqlite3_stmt* stmt;
+	int userRole = -1;
+
+	auto sql = "select Roles.RolePriority from Users "
+		"inner join Roles "
+		"on Roles.ID = Users.RoleID "
+		"where Users.Email = '" + email + "'";
+
+	int rc = sqlite3_prepare_v2(instance->db, sql.c_str(), -1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		printf("error: %s", sqlite3_errmsg(instance->db));
+		exit(-1);
+	}
+
+	rc = sqlite3_step(stmt);
+	char* userRoleString = (char*)sqlite3_column_text(stmt, 0);
+	if (userRoleString == NULL)
+		return -1;
+	userRole = atoi(userRoleString);
+
+	sqlite3_finalize(stmt);
+
+	return userRole;
+}

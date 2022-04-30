@@ -6,25 +6,128 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>874</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QTableWidget" name="ticketTableWidget">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>120</y>
-     <width>49</width>
-     <height>16</height>
+     <x>10</x>
+     <y>10</y>
+     <width>851</width>
+     <height>341</height>
     </rect>
    </property>
-   <property name="text">
-    <string>TextLabel</string>
+   <property name="showGrid">
+    <bool>true</bool>
    </property>
+   <property name="gridStyle">
+    <enum>Qt::SolidLine</enum>
+   </property>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>Ticket ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Category</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Problem</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Solution</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Client</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Technician</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>53</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>Hardware</string>
+    </property>
+   </item>
+   <item row="0" column="2">
+    <property name="text">
+     <string>LCD is bad</string>
+    </property>
+   </item>
+   <item row="0" column="3">
+    <property name="text">
+     <string>Replace LCD</string>
+    </property>
+   </item>
+   <item row="0" column="4">
+    <property name="text">
+     <string>Popescu Ionut</string>
+    </property>
+   </item>
+   <item row="0" column="5">
+    <property name="text">
+     <string>Damian Petrescu</string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>67</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>Software</string>
+    </property>
+   </item>
+   <item row="1" column="2">
+    <property name="text">
+     <string>There are some bad glitches going on in this app, maybe the devs need to look more closely on that damned spagetti code!</string>
+    </property>
+   </item>
+   <item row="1" column="3">
+    <property name="text">
+     <string>The devs (don't) know what they're doing. Ticket has been submitted and they are testing the solution right now.</string>
+    </property>
+   </item>
+   <item row="1" column="4">
+    <property name="text">
+     <string>Manole Bulz</string>
+    </property>
+   </item>
+   <item row="1" column="5">
+    <property name="text">
+     <string>Mihai-Stefan Anghel</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

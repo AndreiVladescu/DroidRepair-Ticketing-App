@@ -7,8 +7,7 @@ bool Login(MainWindow* ui)
 {
     string email, password;
     bool userLogged = false;
-    //bool passAccepted = false;
-    //while (userLogged == false) {
+
     email = ui->email.toStdString();
     password = ui->password.toStdString();
 
