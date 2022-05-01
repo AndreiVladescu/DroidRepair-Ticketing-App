@@ -13,6 +13,11 @@ Ticket::Ticket()
 	rb = _problem.empty();
 }
 
+string Ticket::getClientEmail()
+{
+    return this->_client_email;
+}
+
 // Default destructor, empties things
 Ticket::~Ticket()
 {
@@ -54,6 +59,11 @@ void Ticket::setClientID(int cid)
 void Ticket::setTechnicianID(int tid)
 {
 	_technician_id = tid;
+}
+
+void Ticket::setClientEmail(string email)
+{
+	this->_client_email = email;
 }
 
 string Ticket::getCategory()

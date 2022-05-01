@@ -22,12 +22,12 @@
 
 int main(void)
 {
-	//auto sqlServer = SQLServer::getInstance();
-	//string email = "technician1@mail.com";
-	//string passwd = "abcde";
+	/*auto sqlServer = SQLServer::getInstance();
+	string email = "technician1@mail.com";
+	string passwd = "abcde";
 
-	//cout << sqlServer->GetUserRole(email);
-	//return 0;
+	auto vect = sqlServer->GetUserTickets(email, 1);
+	return 0;*/
 
 	Server server(DEFAULT_PORT);
 

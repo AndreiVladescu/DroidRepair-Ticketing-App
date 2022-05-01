@@ -7,11 +7,13 @@
 #include <QMessageBox>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 #include "ticketviewerdialog.h"
 #include "Client.h"
+#include "Ticket.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +28,8 @@ public:
     ~MainWindow();
 
     friend bool Login(MainWindow* ui);
+    friend class Client;
+    friend void  TransferTickets(Client* clientPtr, MainWindow* windowPtr);
 private slots:
     void on_loginButton_clicked();
 
@@ -46,6 +50,7 @@ private:
     QString password = "";
     QString email = "";
     TicketViewerDialog* ticketWindow = nullptr;
+    vector<Ticket> ticketVector = {};
 
     void loadCache();
 

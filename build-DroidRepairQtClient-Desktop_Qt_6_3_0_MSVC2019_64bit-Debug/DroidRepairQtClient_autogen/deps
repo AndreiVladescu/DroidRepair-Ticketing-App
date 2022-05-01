@@ -5,6 +5,7 @@ DroidRepairQtClient_autogen/timestamp: \
 	C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Enum_Packets.h \
 	C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/ITicket.h \
 	C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/IUser.h \
+	C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/SharedFunctions.cpp \
 	C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Ticket.cpp \
 	C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/Ticket.h \
 	C:/Users/Admin/source/repos/DroidRepair/DroidRepairQtClient/User.cpp \

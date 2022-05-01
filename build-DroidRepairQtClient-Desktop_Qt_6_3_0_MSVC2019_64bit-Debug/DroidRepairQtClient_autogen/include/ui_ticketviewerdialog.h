@@ -13,6 +13,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,12 +23,14 @@ class Ui_TicketViewerDialog
 {
 public:
     QTableWidget *ticketTableWidget;
+    QLabel *label;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *TicketViewerDialog)
     {
         if (TicketViewerDialog->objectName().isEmpty())
             TicketViewerDialog->setObjectName(QString::fromUtf8("TicketViewerDialog"));
-        TicketViewerDialog->resize(874, 362);
+        TicketViewerDialog->resize(935, 375);
         ticketTableWidget = new QTableWidget(TicketViewerDialog);
         if (ticketTableWidget->columnCount() < 6)
             ticketTableWidget->setColumnCount(6);
@@ -73,9 +77,24 @@ public:
         QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
         ticketTableWidget->setItem(1, 5, __qtablewidgetitem19);
         ticketTableWidget->setObjectName(QString::fromUtf8("ticketTableWidget"));
-        ticketTableWidget->setGeometry(QRect(10, 10, 851, 341));
+        ticketTableWidget->setGeometry(QRect(10, 70, 921, 301));
+        ticketTableWidget->setMaximumSize(QSize(16777215, 16777215));
+        ticketTableWidget->setLayoutDirection(Qt::LeftToRight);
+        ticketTableWidget->setFrameShape(QFrame::Panel);
+        ticketTableWidget->setFrameShadow(QFrame::Sunken);
         ticketTableWidget->setShowGrid(true);
         ticketTableWidget->setGridStyle(Qt::SolidLine);
+        ticketTableWidget->horizontalHeader()->setCascadingSectionResizes(false);
+        ticketTableWidget->horizontalHeader()->setDefaultSectionSize(150);
+        ticketTableWidget->horizontalHeader()->setHighlightSections(true);
+        ticketTableWidget->horizontalHeader()->setStretchLastSection(false);
+        ticketTableWidget->verticalHeader()->setStretchLastSection(false);
+        label = new QLabel(TicketViewerDialog);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(230, 20, 49, 16));
+        pushButton = new QPushButton(TicketViewerDialog);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(400, 20, 75, 24));
 
         retranslateUi(TicketViewerDialog);
 
@@ -126,6 +145,8 @@ public:
         ___qtablewidgetitem17->setText(QCoreApplication::translate("TicketViewerDialog", "Mihai-Stefan Anghel", nullptr));
         ticketTableWidget->setSortingEnabled(__sortingEnabled);
 
+        label->setText(QCoreApplication::translate("TicketViewerDialog", "TextLabel", nullptr));
+        pushButton->setText(QCoreApplication::translate("TicketViewerDialog", "PushButton", nullptr));
     } // retranslateUi
 
 };

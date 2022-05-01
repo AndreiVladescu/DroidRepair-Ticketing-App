@@ -11,7 +11,7 @@ protected:
 	string _category;
 	string _problem;
 	string _solution;
-
+	string _client_email;
 public:
 	Ticket();
 	~Ticket();
@@ -19,9 +19,10 @@ public:
 	void setCategory(string category) override;
 	void setProblem(string problem) override;
 	void setSolution(string solution) override;
-	void setID(int id);
+    void setID(int id) override;
 	void setClientID(int cid) override;
 	void setTechnicianID(int tid) override;
+	void setClientEmail(string email);
 #pragma endregion
 #pragma region Getters
 	string getCategory() override;
@@ -30,6 +31,8 @@ public:
 	int getID() override;
 	int getClientID() override;
 	int getTechnicianID() override;
+    string getClientEmail();
+
 #pragma endregion
 };
 

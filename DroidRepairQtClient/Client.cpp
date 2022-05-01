@@ -1,6 +1,6 @@
 #include "Client.h"
 
-Client::Client(const char* serverAddress, int PORT)
+Client::Client(const char* serverAddress, int PORT, MainWindow* windowPtr)
 {
 	WSADATA wsaData;
 
@@ -24,6 +24,7 @@ Client::Client(const char* serverAddress, int PORT)
 	}
 
 	clientPtr = this;
+    this->mainWindowPtr = windowPtr;
 }
 
 bool Client::Connect()
@@ -71,22 +72,18 @@ bool Client::ProcessPacket(PACKET_HEADER packetType)
 	{
 		if (!LoginResponse())
 			return false;
-		/*string message;
-		if (!GetString(message))
-			return false;
-		std::cout << message << std::endl;*/
+
 		break;
 	}
-
-	//case P_DirectMessage:
-	//{
-	//	bool value;
-	//	if (!GetBool(value))
-	//		DM_Failed = value;
-	//	break;
-	//}
+    case Send_Ticket_Vector_Response:
+    {
+        //TransferTickets(this, this->mainWindowPtr);
+        this->GetVectorTicket(this->ticketVector);
+        TransferTickets(this, this->mainWindowPtr);
+        break;
+    }
 	default:
-		std::cout << "unrecognized packet: " << packetType << std::endl;
+        std::cout << "Unrecognized packet: " << packetType << std::endl;
 	}
 	return true;
 }
@@ -212,6 +209,106 @@ bool Client::GetBool(bool& value)
 	return true;
 }
 
+bool Client::SendVectorTicket(vector<Ticket> ticketVector)
+{
+    int elCount = ticketVector.size();
+    if (!SendInt(elCount))
+        return false;
+
+    for (int i = 0; i < elCount; i++) {
+        SendTicket(ticketVector[i]);
+    }
+
+        return true;
+}
+
+bool Client::GetVectorTicket(vector<Ticket>& ticketVector)
+{
+    int elCount;
+    if (!GetInt(elCount))
+        return false;
+
+    ticketVector.reserve(elCount);
+
+    while (elCount--) {
+        Ticket tempTicket;
+
+        GetTicket(tempTicket);
+
+        ticketVector.push_back(tempTicket);
+    }
+
+    return true;
+}
+
+
+bool Client::SendTicket(Ticket ticket)
+{
+    if (!SendInt(ticket.getID()))
+        return false;
+
+    if (!SendInt(ticket.getClientID()))
+        return false;
+
+    if (!SendInt(ticket.getTechnicianID()))
+        return false;
+
+    if (!SendString(ticket.getCategory()))
+        return false;
+
+    if (!SendString(ticket.getProblem()))
+        return false;
+
+    if (!SendString(ticket.getSolution()))
+        return false;
+
+    if (!SendString(ticket.getClientEmail()))
+        return false;
+
+    return true;
+}
+
+bool Client::GetTicket(Ticket& ticket)
+{
+    int tempInt;
+    string tempString;
+    if (!GetInt(tempInt))
+        return false;
+
+    ticket.setID(tempInt);
+
+    if (!GetInt(tempInt))
+        return false;
+
+    ticket.setClientID(tempInt);
+
+    if (!GetInt(tempInt))
+        return false;
+
+    ticket.setTechnicianID(tempInt);
+
+    if (!GetString(tempString))
+        return false;
+
+    ticket.setCategory(tempString);
+
+    if (!GetString(tempString))
+        return false;
+
+    ticket.setProblem(tempString);
+
+    if (!GetString(tempString))
+        return false;
+
+    ticket.setSolution(tempString);
+
+    if (!GetString(tempString))
+        return false;
+
+    ticket.setClientEmail(tempString);
+
+    return true;
+}
 
 bool Client::CloseConnection()
 {

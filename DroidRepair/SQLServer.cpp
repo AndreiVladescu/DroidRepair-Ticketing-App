@@ -89,7 +89,6 @@ int SQLServer::GetUserID(string email)
 
 int SQLServer::GetUserRole(string email)
 {
-
 	sqlite3_stmt* stmt;
 	int userRole = -1;
 
@@ -113,4 +112,74 @@ int SQLServer::GetUserRole(string email)
 	sqlite3_finalize(stmt);
 
 	return userRole;
+}
+
+vector<Ticket> SQLServer::GetUserTickets(string email, int role)
+{
+	sqlite3_stmt* stmt;
+	vector<Ticket> ticketVector = {};
+	string sql;
+	int ticketNumber = -1;
+	if (role) {
+		sql = "select count(Tickets.Problem) from Tickets inner join Users on Tickets.ClientID = Users.ID left join Users as Technicians on Technicians.ID = Tickets.TechnicianID where  Technicians.ID IS NULL or Technicians.Email = '" + email + "'";
+	}
+	else {
+		sql = "select count(T.Problem) from Tickets as T inner join Users as C on C.ID = T.ClientID where C.Email = '" + email + "'";
+	}
+
+	int rc = sqlite3_prepare_v2(instance->db, sql.c_str(), -1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		printf("error: %s", sqlite3_errmsg(instance->db));
+		exit(-1);
+	}
+
+	rc = sqlite3_step(stmt);
+	char* ticketNumberString = (char*)sqlite3_column_text(stmt, 0);
+	if (ticketNumberString == NULL)
+		ticketNumber = 0;
+	ticketNumber = atoi(ticketNumberString);
+
+	if (role) {
+		sql = "select T.Category, T.Problem, T.Solution, C.Email as [Client Mail] from Tickets as T \
+			inner join Users as C \
+			on C.ID = T.ClientID \
+			left join Users as TU \
+			on TU.ID = T.TechnicianID \
+			where TU.Email = '" + email + "'" +
+			" or TU.ID IS NULL";
+	}
+	else {
+		sql = "select T.Category, T.Problem, T.Solution from Tickets as T \
+			inner join Users as C \
+			on C.ID = T.ClientID \
+			where C.Email = '" + email + "'";
+	}
+
+	rc = sqlite3_prepare_v2(instance->db, sql.c_str(), -1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		printf("error: %s", sqlite3_errmsg(instance->db));
+		exit(-1);
+	}
+
+	for (int i = 0; i < ticketNumber; i++) {
+		Ticket tempTicket;
+		rc = sqlite3_step(stmt);
+		char* tempCategoryString = (char*)sqlite3_column_text(stmt, 0);
+		char* tempProblemString = (char*)sqlite3_column_text(stmt, 1);
+		char* tempSolutionString = (char*)sqlite3_column_text(stmt, 2);
+		tempTicket.setCategory(tempCategoryString);
+		tempTicket.setProblem(tempProblemString);
+		if (tempSolutionString != NULL)
+			tempTicket.setSolution(tempSolutionString);
+
+		if (role) {
+			char* tempClientMailString = (char*)sqlite3_column_text(stmt, 3);
+			tempTicket.setClientEmail(tempClientMailString);
+		}
+		ticketVector.push_back(tempTicket);
+	}
+	sqlite3_finalize(stmt);
+
+
+	return ticketVector;
 }

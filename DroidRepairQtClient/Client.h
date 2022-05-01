@@ -10,10 +10,13 @@
 #include <iostream>
 #include <string>
 #include <thread>
+#include <vector>
 
 class MainWindow;
 
 #include "Enum_Packets.h"
+#include "Ticket.h"
+//#include "SharedFunctions.cpp"
 
 using namespace std;
 
@@ -23,7 +26,7 @@ using namespace std;
 class Client
 {
 public:
-	Client(const char* serverAddress, int PORT);
+    Client(const char* serverAddress, int PORT, MainWindow* ptr);
 	bool Connect();
 	inline void StartSubRoutine() { clientThread = std::thread(ClientHandler); }
 
@@ -31,7 +34,9 @@ public:
 	bool GetBool(bool& value);
 
 	bool LoginResponse();
-   friend bool Login(MainWindow* ui);
+    friend bool Login(MainWindow* ui);
+    friend class MainWindow;
+    friend void  TransferTickets(Client* clientPtr, MainWindow* windowPtr);
 private:
 	bool ProcessPacket(PACKET_HEADER packetType);
 	static void ClientHandler();
@@ -43,6 +48,10 @@ private:
 	bool GetPacketType(PACKET_HEADER& packetType);
 	bool GetString(std::string& value);
 	bool CloseConnection();
+    bool GetVectorTicket(vector<Ticket>& ticketVector);
+    bool SendVectorTicket(vector<Ticket> ticketVector);
+    bool GetTicket(Ticket& ticket);
+    bool SendTicket(Ticket ticket);
 
 	int iResult;
 	SOCKET ServerConnection;
@@ -50,6 +59,9 @@ private:
 	addrinfo* ptr = NULL;
 	addrinfo hints;
 	std::thread clientThread;
+    vector<Ticket> ticketVector;
+
+    MainWindow* mainWindowPtr;
 };
 
 static string serverIP;

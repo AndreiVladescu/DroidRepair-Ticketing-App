@@ -32,7 +32,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 35,
+				"line" : 39,
 				"parent" : 0
 			},
 			{
@@ -62,7 +62,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 57,
+				"line" : 61,
 				"parent" : 0
 			}
 		]
@@ -186,7 +186,9 @@
 				9,
 				11,
 				13,
-				17
+				17,
+				18,
+				22
 			]
 		}
 	],
@@ -296,7 +298,9 @@
 				9,
 				11,
 				13,
-				17
+				17,
+				18,
+				22
 			]
 		},
 		{
@@ -310,7 +314,9 @@
 				10,
 				12,
 				14,
-				15
+				15,
+				19,
+				20
 			]
 		},
 		{
@@ -319,15 +325,16 @@
 			[
 				4,
 				5,
-				16
+				16,
+				21
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				18,
-				19
+				23,
+				24
 			]
 		}
 	],
@@ -416,9 +423,37 @@
 			"sourceGroupIndex" : 1
 		},
 		{
+			"backtrace" : 4,
+			"path" : "ticketviewerdialog.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "ticketviewerdialog.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "ticketviewerdialog.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "SharedFunctions.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/DroidRepairQtClient_autogen/include/ui_mainwindow.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/Admin/source/repos/DroidRepair/build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug/DroidRepairQtClient_autogen/include/ui_ticketviewerdialog.h",
 			"sourceGroupIndex" : 1
 		},
 		{

@@ -112,6 +112,15 @@ build CMakeFiles\DroidRepairQtClient.dir\ticketviewerdialog.cpp.obj: CXX_COMPILE
   TARGET_COMPILE_PDB = CMakeFiles\DroidRepairQtClient.dir\
   TARGET_PDB = DroidRepairQtClient.pdb
 
+build CMakeFiles\DroidRepairQtClient.dir\SharedFunctions.cpp.obj: CXX_COMPILER__DroidRepairQtClient_Debug C$:\Users\Admin\source\repos\DroidRepair\DroidRepairQtClient\SharedFunctions.cpp || cmake_object_order_depends_target_DroidRepairQtClient
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -Zc:__cplusplus -permissive- -utf-8 -std:c++17
+  INCLUDES = -IC:\Users\Admin\source\repos\DroidRepair\build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug -IC:\Users\Admin\source\repos\DroidRepair\DroidRepairQtClient -IC:\Users\Admin\source\repos\DroidRepair\build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug\DroidRepairQtClient_autogen\include -ID:\Documents\Qt\6.3.0\msvc2019_64\include\QtCore -ID:\Documents\Qt\6.3.0\msvc2019_64\include -ID:\Documents\Qt\6.3.0\msvc2019_64\mkspecs\win32-msvc -ID:\Documents\Qt\6.3.0\msvc2019_64\include\QtWidgets -ID:\Documents\Qt\6.3.0\msvc2019_64\include\QtGui
+  OBJECT_DIR = CMakeFiles\DroidRepairQtClient.dir
+  OBJECT_FILE_DIR = CMakeFiles\DroidRepairQtClient.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DroidRepairQtClient.dir\
+  TARGET_PDB = DroidRepairQtClient.pdb
+
 build CMakeFiles\DroidRepairQtClient.dir\DroidRepairQtClient_autogen\EWIEGA46WW\qrc_resources.cpp.obj: CXX_COMPILER__DroidRepairQtClient_Debug C$:\Users\Admin\source\repos\DroidRepair\build-DroidRepairQtClient-Desktop_Qt_6_3_0_MSVC2019_64bit-Debug\DroidRepairQtClient_autogen\EWIEGA46WW\qrc_resources.cpp || cmake_object_order_depends_target_DroidRepairQtClient
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -Zc:__cplusplus -permissive- -utf-8 -std:c++17
@@ -129,7 +138,7 @@ build CMakeFiles\DroidRepairQtClient.dir\DroidRepairQtClient_autogen\EWIEGA46WW\
 #############################################
 # Link the executable DroidRepairQtClient.exe
 
-build DroidRepairQtClient.exe: CXX_EXECUTABLE_LINKER__DroidRepairQtClient_Debug CMakeFiles\DroidRepairQtClient.dir\DroidRepairQtClient_autogen\mocs_compilation.cpp.obj CMakeFiles\DroidRepairQtClient.dir\main.cpp.obj CMakeFiles\DroidRepairQtClient.dir\mainwindow.cpp.obj CMakeFiles\DroidRepairQtClient.dir\Ticket.cpp.obj CMakeFiles\DroidRepairQtClient.dir\User.cpp.obj CMakeFiles\DroidRepairQtClient.dir\Client.cpp.obj CMakeFiles\DroidRepairQtClient.dir\ticketviewerdialog.cpp.obj CMakeFiles\DroidRepairQtClient.dir\DroidRepairQtClient_autogen\EWIEGA46WW\qrc_resources.cpp.obj | D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Widgetsd.lib D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Guid.lib D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Cored.lib D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6EntryPointd.lib || DroidRepairQtClient_autogen DroidRepairQtClient_autogen_timestamp_deps
+build DroidRepairQtClient.exe: CXX_EXECUTABLE_LINKER__DroidRepairQtClient_Debug CMakeFiles\DroidRepairQtClient.dir\DroidRepairQtClient_autogen\mocs_compilation.cpp.obj CMakeFiles\DroidRepairQtClient.dir\main.cpp.obj CMakeFiles\DroidRepairQtClient.dir\mainwindow.cpp.obj CMakeFiles\DroidRepairQtClient.dir\Ticket.cpp.obj CMakeFiles\DroidRepairQtClient.dir\User.cpp.obj CMakeFiles\DroidRepairQtClient.dir\Client.cpp.obj CMakeFiles\DroidRepairQtClient.dir\ticketviewerdialog.cpp.obj CMakeFiles\DroidRepairQtClient.dir\SharedFunctions.cpp.obj CMakeFiles\DroidRepairQtClient.dir\DroidRepairQtClient_autogen\EWIEGA46WW\qrc_resources.cpp.obj | D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Widgetsd.lib D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Guid.lib D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Cored.lib D$:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6EntryPointd.lib || DroidRepairQtClient_autogen DroidRepairQtClient_autogen_timestamp_deps
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:windows  -DYNAMICBASE -NXCOMPAT -LARGEADDRESSAWARE
   LINK_LIBRARIES = D:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Widgetsd.lib  D:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Guid.lib  D:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6Cored.lib  mpr.lib  userenv.lib  D:\Documents\Qt\6.3.0\msvc2019_64\lib\Qt6EntryPointd.lib  shell32.lib  d3d11.lib  dxgi.lib  dxguid.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -200,7 +209,7 @@ build DroidRepairQtClient_autogen\EWIEGA46WW\qrc_resources.cpp | ${cmake_ninja_w
 #############################################
 # Phony custom command for CMakeFiles\DroidRepairQtClient_autogen_timestamp_deps
 
-build CMakeFiles\DroidRepairQtClient_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles\DroidRepairQtClient_autogen_timestamp_deps: phony D$:\Documents\Qt\6.3.0\msvc2019_64\.\bin\moc.exe D$:\Documents\Qt\6.3.0\msvc2019_64\.\bin\uic.exe D$:\Documents\Qt\6.3.0\msvc2019_64\bin\Qt6Cored.dll D$:\Documents\Qt\6.3.0\msvc2019_64\bin\Qt6Widgetsd.dll
+build CMakeFiles\DroidRepairQtClient_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles\DroidRepairQtClient_autogen_timestamp_deps: phony D$:\Documents\Qt\6.3.0\msvc2019_64\.\bin\moc.exe D$:\Documents\Qt\6.3.0\msvc2019_64\bin\Qt6Cored.dll D$:\Documents\Qt\6.3.0\msvc2019_64\.\bin\uic.exe D$:\Documents\Qt\6.3.0\msvc2019_64\bin\Qt6Widgetsd.dll
 
 
 #############################################

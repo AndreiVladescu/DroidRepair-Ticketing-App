@@ -32,6 +32,7 @@ set(PROJECT_SOURCES
      ticketviewerdialog.h
      ticketviewerdialog.ui
      ticketviewerdialog.cpp
+     SharedFunctions.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

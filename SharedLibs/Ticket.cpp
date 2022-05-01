@@ -56,6 +56,11 @@ void Ticket::setTechnicianID(int tid)
 	_technician_id = tid;
 }
 
+void Ticket::setClientEmail(string email)
+{
+	this->_client_email = email;
+}
+
 string Ticket::getCategory()
 {
 	return this->_category;
@@ -69,6 +74,11 @@ string Ticket::getProblem()
 string Ticket::getSolution()
 {
 	return this->_solution;
+}
+
+string Ticket::getClientEmail()
+{
+	return this->_client_email;
 }
 
 int Ticket::getID()

@@ -2,9 +2,10 @@
 
 #include <iostream>
 #include <sqlite3.h>
-
+#include <vector>
 #include "../SharedLibs/bcrypt.h"
 #include "../SharedLibs/node_blf.h"
+#include "../SharedLibs/Ticket.h"
 
 using namespace std;
 
@@ -32,5 +33,6 @@ public:
 	static bool AuthenticateUser(string email, string password);
 	static int GetUserID(string email);
 	static int GetUserRole(string email);
+	static vector<Ticket> GetUserTickets(string email, int role);
 };
 

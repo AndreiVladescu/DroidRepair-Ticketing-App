@@ -151,6 +151,7 @@
     <ClCompile Include="SQLServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\SharedLibs\Enum_Packets.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="SQLServer.h" />
   </ItemGroup>

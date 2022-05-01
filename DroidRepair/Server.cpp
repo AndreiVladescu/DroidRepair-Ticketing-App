@@ -189,7 +189,13 @@ bool Server::ProcessPacket(int index, PACKET_HEADER packetType)
 		}
 		break;
 	}
-
+	case Send_Ticket_Vector_Request:
+	{
+		if (!SendClientTicketList(index)) {
+			//cout << "Failed login from " << index << endl;
+		}
+		break;
+	}
 	default:
 		std::cout << "Unrecognized packet: " << packetType << std::endl;
 		break;
@@ -207,7 +213,7 @@ bool Server::LoginClient(int index)
 
 	bool rb;
 	rb = sqlServer->AuthenticateUser(email, passwd);
-
+	LinkClientToConnection(index, email);
 
 	SendBool(index, rb);
 	if (rb) {
@@ -222,9 +228,35 @@ bool Server::LoginClient(int index)
 	return true;
 }
 
-bool Server::SendClientTickets(int index)
+bool Server::SendVectorTicket(int id, vector<Ticket> ticketVector)
 {
+	int elCount = ticketVector.size();
+	if (!SendInt(id, elCount))
+		return false;
 
+	for (int i = 0; i < elCount; i++) {
+
+		SendTicket(id, ticketVector[i]);
+	}
+
+	return true;
+}
+
+bool Server::GetVectorTicket(int id, vector<Ticket>& ticketVector)
+{
+	int elCount;
+	if (!GetInt(id, elCount))
+		return false;
+
+	ticketVector.reserve(elCount);
+
+	while (elCount--) {
+		Ticket tempTicket;
+
+		GetTicket(id, tempTicket);
+
+		ticketVector.push_back(tempTicket);
+	}
 
 	return true;
 }
@@ -237,6 +269,74 @@ bool Server::LinkClientToConnection(int index, string email)
 	users[index]->setID(this->sqlServer->GetUserID(email));
 	users[index]->setEmail(email);
 	users[index]->setRole(this->sqlServer->GetUserRole(email));
+	return true;
+}
+
+bool Server::SendTicket(int id, Ticket ticket)
+{
+	if (!SendInt(id, ticket.getID()))
+		return false;
+
+	if (!SendInt(id, ticket.getClientID()))
+		return false;
+
+	if (!SendInt(id, ticket.getTechnicianID()))
+		return false;
+
+	if (!SendString(id, ticket.getCategory()))
+		return false;
+
+	if (!SendString(id, ticket.getProblem()))
+		return false;
+
+	if (!SendString(id, ticket.getSolution()))
+		return false;
+
+	if (!SendString(id, ticket.getClientEmail()))
+		return false;
+
+	return true;
+}
+
+bool Server::GetTicket(int id, Ticket& ticket)
+{
+	int tempInt;
+	string tempString;
+	if (!GetInt(id, tempInt))
+		return false;
+
+	ticket.setID(tempInt);
+
+	if (!GetInt(id, tempInt))
+		return false;
+
+	ticket.setClientID(tempInt);
+
+	if (!GetInt(id, tempInt))
+		return false;
+
+	ticket.setTechnicianID(tempInt);
+
+	if (!GetString(id, tempString))
+		return false;
+
+	ticket.setCategory(tempString);
+
+	if (!GetString(id, tempString))
+		return false;
+
+	ticket.setProblem(tempString);
+
+	if (!GetString(id, tempString))
+		return false;
+
+	ticket.setSolution(tempString);
+
+	if (!GetString(id, tempString))
+		return false;
+
+	ticket.setClientEmail(tempString);
+
 	return true;
 }
 
@@ -255,7 +355,6 @@ bool Server::CloseConnection(int index)
 	return true;
 }
 
-
 //Bulk of work
 void Server::ClientHandler(int index)
 {
@@ -271,4 +370,15 @@ void Server::ClientHandler(int index)
 
 	std::cout << "Lost contact with client: id = " << index << std::endl;
 	serverPtr->CloseConnection(index);
+}
+
+bool Server::SendClientTicketList(int index)
+{
+	SendPacketType(index, Send_Ticket_Vector_Response);
+
+	auto ticketVector = sqlServer->GetUserTickets(users[index]->getEmail(), users[index]->getRole());
+
+	SendVectorTicket(index, ticketVector);
+
+	return false;
 }

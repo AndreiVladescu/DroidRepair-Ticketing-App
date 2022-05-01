@@ -49,12 +49,16 @@ private:
 	bool GetPacketType(int id, PACKET_HEADER& packetType);
 	bool SendString(int id, const std::string& value);
 	bool GetString(int id, std::string& value);
+	bool SendVectorTicket(int id, vector<Ticket> ticketVector);
+	bool SendTicket(int id, Ticket ticketVector);
+	bool GetVectorTicket(int id, vector<Ticket>& ticketVector);
+	bool GetTicket(int id, Ticket& ticketVector);
 
 	bool ProcessPacket(int index, PACKET_HEADER packetType);
 
 	bool LoginClient(int index);
-	bool SendClientTickets(int index);
 	bool LinkClientToConnection(int index, string email);
+	bool SendClientTicketList(int index);
 
 	bool CloseConnection(int index);
 

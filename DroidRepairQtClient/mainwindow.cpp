@@ -64,20 +64,27 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_loginButton_clicked()
 {
-    myClient = new Client(serverIP.c_str(), DEFAULT_PORT);
+    myClient = new Client(serverIP.c_str(), DEFAULT_PORT, this);
+
     if (!myClient->Connect())
         {
             exit(EXIT_FAILURE);
         }
+
     if (Login(this)){
         myClient->StartSubRoutine();
         ui->labelConnectionStatus->setText(QString("Connected"));
         ui->labelLed->setPixmap(QPixmap(QString::fromUtf8(":/imgs/Resources/green_led.jpg")));
+        myClient->SendPacketType(Send_Ticket_Vector_Request);
+        //PACKET_HEADER packet_Type;
+
+
         Sleep(500);
         this->hide();
 
         // TODO add user to constructor
-        ticketWindow = new TicketViewerDialog(this);
+        ticketWindow = new TicketViewerDialog(this, &this->ticketVector);
+        //icketWindow->ticketVectorPtr = &this->ticketVector;
         ticketWindow->setModal(true);
         ticketWindow->exec();
 
